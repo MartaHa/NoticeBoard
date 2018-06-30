@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th th:text="'Title'"> </th>
+        <th th:text="'Summary'"> </th>
+        <th th:text="'Expiration date'"> </th>
+        <th th:text="'Category'"> </th>
+        <th th:text="''"> </th>
+        <th th:text="''"> </th>
+        <th th:text="''"> </th>
+
+    </tr>
+
+    <tr th:each="notice: ${notices}">
+        <td th:text="${notice.title}"></td>
+        <td th:text="${notice.summary}"></td>
+        <td th:text="${notice.expirationDate}"></td>
+        <!--<td th:text="${notice.category.name}"></td>-->
+        <td> <a th:href="@{/notice/update/{id}/(id=${notice.id})}"> EDIT </a> </td>
+        <td> <a th:href="@{/notice/delete/{id}/(id=${notice.id})}"> DELETE </a> </td>
+        <td > <a th:href="@{/category/addCategoryToNotice/{id}/(id=${notice.id})}">  ADD CATEGORY </a> </td>
+        <!--sec:authorize="hasRole('ROLE_ADMIN')"-->
+    </tr>
+
+</table>
+<table>
+<tr th:each="notice: ${notices}">
+    <td th:text="${notice.comment}"> </td>
+
+</tr>
+</table>
+<tr th:each="notice: ${notices}">
+<a th:href="@{/comment/addComment/{id}/(id=${notice.id})}"> Leave a comment here </a>
+</tr>
+</body>
+</html>

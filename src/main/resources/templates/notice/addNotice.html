@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Add an add: </h1>
+
+<form th:action="@{/notice/addNotice}" th:object="${notice}" method="post">
+
+    <p> Title: <input type="text" th:field="*{title}"/></p>
+    <p> Summary: <input type="text" th:field="*{summary}"/></p>
+    <p> Expiration Date: <input type="text" th:field="*{expirationDate}"/></p>
+
+    <p><input type="submit" value="Submit"/></p>
+</form>
+</body>
+</html>

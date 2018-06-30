@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th th:text="'Title'"> </th>
+        <th th:text="'Summary'"> </th>
+        <th th:text="'Expiration date'"> </th>
+        <th th:text="'Category'"> </th>
+        <th th:text="''"> </th>
+
+    </tr>
+
+    <tr th:each="notice: ${notices}">
+        <td th:text="${notice.title}"></td>
+        <td th:text="${notice.summary}"></td>
+        <td th:text="${notice.expirationDate}"></td>
+        <td></td>
+        <!--&lt;!&ndash;<td th:text="${notice.category.name}"></td>&ndash;&gt;-->
+        <td>  <a th:href="@{/notice/showNotice/{id}/(id=${notice.id})}"> Show Details </a></td>
+
+    </tr>
+</table>
+</body>
+</html>

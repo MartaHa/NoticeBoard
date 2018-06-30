@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Hello what do you want to do :</h3>
+<div>
+    Add an ad:
+    <a th:href="@{notice/addNotice}"> Add an ad </a> </br>
+    See all ads:
+    <a th:href="@{notice/showAll}"> See all ads </a> </br>
+    <a th:href="@{user/admin}"> Admin </a> </br>
+</div>
+</body>
+</html>
