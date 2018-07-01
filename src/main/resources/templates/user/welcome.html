@@ -6,13 +6,15 @@
     <title>Title</title>
 </head>
 <body>
-<h3>Hello what do you want to do :</h3>
+<p>Hello what do you want to do :</p>
 <div>
     Add an ad:
-    <a th:href="@{notice/addNotice}"> Add an ad </a> </br>
+    <a th:href="@{notice/addNotice}"> Add an ad </a> <br>
     See all ads:
-    <a th:href="@{notice/showAll}"> See all ads </a> </br>
-    <a th:href="@{user/admin}"> Admin </a> </br>
+    <a th:href="@{notice/showAll}"> See all ads </a> <br>
+    <a th:href="@{user/admin}"> Admin </a> <br>
+    Edit my profile
+    <a th:href="@{/user/update}"> Update my Profile </a> <br>
 </div>
 </body>
 </html>

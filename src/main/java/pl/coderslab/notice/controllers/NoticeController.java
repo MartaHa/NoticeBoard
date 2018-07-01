@@ -2,6 +2,7 @@ package pl.coderslab.notice.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -67,12 +68,36 @@ public class NoticeController {
     @GetMapping("/showNotice/{id}")
 
     public String showOne(Model model, @PathVariable Long id) {
-        model.addAttribute("notices", noticeRepository.getOne(id));
+        model.addAttribute("notice", noticeRepository.getOne(id));
         return "notice/showNotice";
 
     }
 
+    //updateNotice
+
+    @GetMapping("/update/{id}")
+    public String showForm(Model model, @PathVariable long id) {
+        Notice n  = noticeRepository.findOne(id);
+        model.addAttribute("notice", n);
+        return "notice/updateNotice";
+    }
 
 
+    @PostMapping("/update")
+
+    public String performUpdate(@ModelAttribute Notice notice) {
+        noticeRepository.save(notice);
+        return "redirect:/notice/showAll";
+
+    }
+
+//deletenotice
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable long id) {
+
+        noticeRepository.delete(noticeRepository.findOne(id));
+        return "redirect:/welcome";
+    }
 
 }

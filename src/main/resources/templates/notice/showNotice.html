@@ -17,15 +17,17 @@
 
     </tr>
 
-    <tr th:each="notice: ${notices}">
-        <td th:text="${notice.title}"></td>
-        <td th:text="${notice.summary}"></td>
-        <td th:text="${notice.expirationDate}"></td>
+    <tr th:each="note: ${notice}">
+        <td th:text="${note.title}"></td>
+        <td th:text="${note.summary}"></td>
+        <td th:text="${note.expirationDate}"></td>
         <!--<td th:text="${notice.category.name}"></td>-->
+
+
         <td> <a th:href="@{/notice/update/{id}/(id=${notice.id})}"> EDIT </a> </td>
         <td> <a th:href="@{/notice/delete/{id}/(id=${notice.id})}"> DELETE </a> </td>
         <td > <a th:href="@{/category/addCategoryToNotice/{id}/(id=${notice.id})}">  ADD CATEGORY </a> </td>
-        <!--sec:authorize="hasRole('ROLE_ADMIN')"-->
+
     </tr>
 
 </table>

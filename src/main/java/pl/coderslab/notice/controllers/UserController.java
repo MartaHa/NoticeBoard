@@ -60,4 +60,18 @@ public class UserController {
     }
 
 
+
+    //updateUser
+    @GetMapping("/update")
+    public String showFormUser(Model model, @AuthenticationPrincipal CurrentUser customUser) {
+        model.addAttribute("user", customUser.getUser());
+        return "user/updateUser";
+    }
+
+    @PostMapping("/update")
+    public String performUpdate(@ModelAttribute User user) {
+        userRepository.save(user);
+        return "redirect:/showUser";
+    }
+
 }
