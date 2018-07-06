@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th th:text="'Username'"></th>
+        <th th:text="'Password'"></th>
+        <th th:text="'First name'"></th>
+        <th th:text="'Last name'"></th>
+        <th th:text="'Email'"></th>
+        <th th:text="'Phone number'"></th>
+        <th th:text="'Date of birth'"></th>
+        <th th:text="''"></th>
+        <th th:text="''"></th>
+
+    </tr>
+
+    <tr th:each="user1: ${user}">
+        <td th:text="${user1.username}"></td>
+        <td th:text="${user1.password}"></td>
+        <td th:text="${user1.firstName}"></td>
+        <td th:text="${user1.lastName}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.phoneNumber}"></td>
+        <td th:text="${user1.dateOfBirth}"></td>
+
+    </tr>
+</table>
+</p>
+<p> Back o Main<a th:href="@{/welcome}"> Main </a>
+</p>
+</body>
+</html>

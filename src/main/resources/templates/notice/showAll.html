@@ -7,6 +7,7 @@
 <body>
 <table>
     <tr>
+        <th th:text="'Id'"> </th>
         <th th:text="'Title'"> </th>
         <th th:text="'Summary'"> </th>
         <th th:text="'Expiration date'"> </th>
@@ -16,6 +17,7 @@
     </tr>
 
     <tr th:each="notice: ${notices}">
+        <td th:text="${notice.id}"></td>
         <td th:text="${notice.title}"></td>
         <td th:text="${notice.summary}"></td>
         <td th:text="${notice.expirationDate}"></td>

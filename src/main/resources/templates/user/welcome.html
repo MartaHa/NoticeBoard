@@ -3,18 +3,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Welcome User</title>
 </head>
 <body>
-<p>Hello what do you want to do :</p>
+<h3>Hello what do you want to do : </h3>
 <div>
-    Add an ad:
-    <a th:href="@{notice/addNotice}"> Add an ad </a> <br>
-    See all ads:
-    <a th:href="@{notice/showAll}"> See all ads </a> <br>
-    <a th:href="@{user/admin}"> Admin </a> <br>
-    Edit my profile
-    <a th:href="@{/user/update}"> Update my Profile </a> <br>
+    <p>
+        Add an ad:
+        <a th:href="@{notice/addNotice}"> Add an ad </a> <br>
+    </p>
+</div>
+<div>
+    <p>
+        See all ads:
+        <a th:href="@{notice/showAll}"> See all ads </a> <br>
+    </p>
+</div>
+<div>
+    <p> Edit my profile
+        <a th:href="@{/user/update}"> Update my Profile </a> <br>
+    </p>
+</div>
+<div>
+    <p> Delete my profile
+        <a th:href="@{/user/delete}"> Update my Profile </a> <br>
+    </p>
+</div>
+<div>
+    <p> Back o Main<a th:href="@{/welcome}"> Main </a>
+    </p>
 </div>
 </body>
 </html>

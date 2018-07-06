@@ -17,10 +17,10 @@
 
     </tr>
 
-    <tr th:each="note: ${notice}">
-        <td th:text="${note.title}"></td>
-        <td th:text="${note.summary}"></td>
-        <td th:text="${note.expirationDate}"></td>
+    <tr th:each="notice: ${notices}">
+        <td th:text="${notice.title}"></td>
+        <td th:text="${notice.summary}"></td>
+        <td th:text="${notice.expirationDate}"></td>
         <!--<td th:text="${notice.category.name}"></td>-->
 
 
@@ -31,14 +31,14 @@
     </tr>
 
 </table>
-<table>
-<tr th:each="notice: ${notices}">
-    <td th:text="${notice.comment}"> </td>
+<!--&lt;!&ndash;<table>&ndash;&gt;-->
+<!--&lt;!&ndash;<tr th:each="notice: ${notices}">&ndash;&gt;-->
+    <!--&lt;!&ndash;<td th:text="${notice.comment}"> </td>&ndash;&gt;-->
 
-</tr>
-</table>
-<tr th:each="notice: ${notices}">
-<a th:href="@{/comment/addComment/{id}/(id=${notice.id})}"> Leave a comment here </a>
-</tr>
+<!--&lt;!&ndash;</tr>&ndash;&gt;-->
+<!--&lt;!&ndash;</table>&ndash;&gt;-->
+<!--<tr th:each="notice: ${notices}">-->
+<!--<a th:href="@{/comment/addComment/{id}/(id=${notice.id})}"> Leave a comment here </a>-->
+<!--</tr>-->
 </body>
 </html>

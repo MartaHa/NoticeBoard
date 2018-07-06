@@ -2,6 +2,7 @@ package pl.coderslab.notice.service;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import pl.coderslab.notice.entity.Role;
 import pl.coderslab.notice.entity.User;
 import pl.coderslab.notice.repository.RoleRepository;

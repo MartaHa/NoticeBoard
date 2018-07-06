@@ -1,6 +1,10 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
 <body>
 <h1>Your details: </h1>
 
@@ -16,8 +20,10 @@
 
     <p><input type="submit" value="Submit"/></p>
 </form>
-
-
-
+</p>
+<div>
+    <p> Back o Main<a th:href="@{/welcome}"> Main </a>
+    </p>
+</div>
 </body>
 </html>

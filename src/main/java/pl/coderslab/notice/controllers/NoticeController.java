@@ -16,6 +16,7 @@ import pl.coderslab.notice.service.CurrentUser;
 import javax.validation.Valid;
 import javax.validation.Validator;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/notice")
@@ -67,8 +68,8 @@ public class NoticeController {
 
     @GetMapping("/showNotice/{id}")
 
-    public String showOne(Model model, @PathVariable Long id) {
-        model.addAttribute("notice", noticeRepository.getOne(id));
+    public String showOne(Model model, @PathVariable long id) {
+        model.addAttribute("notices", noticeRepository.getOne(id));
         return "notice/showNotice";
 
     }
@@ -77,8 +78,7 @@ public class NoticeController {
 
     @GetMapping("/update/{id}")
     public String showForm(Model model, @PathVariable long id) {
-        Notice n  = noticeRepository.findOne(id);
-        model.addAttribute("notice", n);
+        model.addAttribute("notice",  noticeRepository.findById(id));
         return "notice/updateNotice";
     }
 
@@ -92,12 +92,12 @@ public class NoticeController {
     }
 
 //deletenotice
-
-    @GetMapping("/delete/{id}")
-    public String delete(@PathVariable long id) {
-
-        noticeRepository.delete(noticeRepository.findOne(id));
-        return "redirect:/welcome";
-    }
+//
+//    @GetMapping("/delete/{id}")
+//    public String delete(@PathVariable long id) {
+//
+//        noticeRepository.delete(noticeRepository.findOne(id));
+//        return "redirect:/welcome";
+//    }
 
 }

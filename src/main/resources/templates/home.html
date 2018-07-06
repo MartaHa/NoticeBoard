@@ -6,11 +6,18 @@
     <title>Title</title>
 </head>
 <body>
-
-<a th:href="@{/login}"> Login <br> </a>
-
-<a th:href="@{/user/add}"> Register & add a Notice <br> </a>
-
-<a th:href="@{admin/addAnAdmin}"> Register as an Admin <br> </a>
+<h3> Welcome to the Notice Board App</h3>
+<div>
+    <p> Login</p>
+    <a th:href="@{/login}">LOGIN </a>
+</div>
+<div>
+    <p> Register and add your notice </p>
+    <a th:href="@{/user/add}"> USER </a>
+</div>
+<div>
+<p> I'm an Admin</p>
+    <a th:href="@{admin/addAnAdmin}"> ADMIN </a>
+</div>
 </body>
 </html>

@@ -43,7 +43,7 @@ public class UserController {
 
     @PostMapping("/add")
 
-    public String perform(@ModelAttribute @Valid User user, BindingResult bindingResult,String role ) {
+    public String perform(@ModelAttribute @Valid User user, BindingResult bindingResult, String role) {
         if (bindingResult.hasErrors()) {
             return "user/addUser";
         }
@@ -56,22 +56,43 @@ public class UserController {
     @ResponseBody
     public String admin(@AuthenticationPrincipal CurrentUser customUser) {
         User entityUser = customUser.getUser();
-        return "this is user id " +entityUser.getId() ;
+        return "this is user id " + entityUser.getId();
     }
-
 
 
     //updateUser
     @GetMapping("/update")
     public String showFormUser(Model model, @AuthenticationPrincipal CurrentUser customUser) {
-        model.addAttribute("user", customUser.getUser());
+        User user = customUser.getUser();
+        long userId = user.getId();
+        userRepository.findById(userId).ifPresent(o -> model.addAttribute("user", o));
         return "user/updateUser";
     }
 
     @PostMapping("/update")
     public String performUpdate(@ModelAttribute User user) {
         userRepository.save(user);
-        return "redirect:/showUser";
+        ;
+        return "/welcome";
     }
 
+
+    @GetMapping("/showUser")
+
+    public String showUser(@AuthenticationPrincipal CurrentUser customUser, Model model) {
+        User entityUser = customUser.getUser();
+        model.addAttribute("user", entityUser);
+        return "/user/showUser";
+
+    }
+
+
+    //deleteUser
+    @GetMapping("/delete")
+    public String delete(@AuthenticationPrincipal CurrentUser customUser) {
+        User thisUser = customUser.getUser();
+        long userId = thisUser.getId();
+        userRepository.delete(thisUser);
+        return "redirect:/";
+    }
 }

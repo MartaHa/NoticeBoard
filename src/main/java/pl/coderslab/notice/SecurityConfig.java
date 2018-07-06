@@ -18,10 +18,31 @@ import javax.validation.Validator;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers("admin/addAdmin", "user/addUser", "/home", "notice/**").permitAll()
+//                .antMatchers("/admin/**").hasAnyRole("ADMIN")
+                .antMatchers("/user/welcome").hasAnyRole("USER")
+                .anyRequest().permitAll()
+                .and().formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/checkrole")
+                .and().logout().logoutSuccessUrl("/logout")
+                .permitAll()
+                .and().exceptionHandling().accessDeniedPage("/403");
+    }
+
+
+    public void addViewControllers(ViewControllerRegistry registry) {
+          registry.addViewController("/login").setViewName("/login");
+        registry.addViewController("/403").setViewName("403");
+    }
+
     @Autowired
     DataSource dataSource;
 
-    //password code/decdode
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -31,34 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public SpringDataUserDetailsService customUserDetailsService() {
         return new SpringDataUserDetailsService();
     }
-
-    @Bean
-    public Validator validator() {
-        return new LocalValidatorFactoryBean();
-    }
-
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("admin/addAdmin", "user/addUser", "/home","notice/****").permitAll()
-//                .antMatchers("/admin/**").hasAnyRole("ADMIN")
-                .antMatchers("/user/welcome").hasAnyRole("USER")
-                .anyRequest().permitAll()
-                .and().formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/checkrole")
-                .and().logout().logoutSuccessUrl("/goodbye")
-                .permitAll()
-                .and().exceptionHandling().accessDeniedPage("/403");
-    }
-
-
-    //    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        //  registry.addViewController("/login").setViewName("admin/login");
-        registry.addViewController("/403").setViewName("403");
-    }
-
-
 }
+
+
+

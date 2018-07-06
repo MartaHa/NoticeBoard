@@ -16,7 +16,7 @@ public class Comment {
     private String commentText;
 
 
-    @ManyToOne
-    private Notice notice;
+//    @ManyToOne
+//    private Notice notice;
 
 }

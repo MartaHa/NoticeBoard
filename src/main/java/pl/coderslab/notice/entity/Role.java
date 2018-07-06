@@ -6,10 +6,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "role")
 @Getter
 @Setter
+@Entity
+@Table(name = "role")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,8 +18,6 @@ public class Role {
     @Column(name = "role")
     private String name;
 
-
 }
-
 
 

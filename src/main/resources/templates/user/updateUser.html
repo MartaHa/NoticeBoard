@@ -6,7 +6,7 @@
     <title>$Title$</title>
 </head>
 <body>
-<h1>Update user</h1>
+<h1>Update your profile:</h1>
 <form action="#" th:action="@{/user/update}" th:object="${user}" method="post">
     <p><input type="hidden" th:value="*{id}"/></p>
     <p> Username: <input type="text" th:field="*{username}"/></p>
@@ -16,8 +16,10 @@
     <p>Email: <input type="text" th:field="*{email}"/></p>
     <p>Phone Number: <input type="text" th:field="*{phoneNumber}"/></p>
     <p>Date of Birth: <input type="text" th:field="*{dateOfBirth}" th:errorClass="error"/></p>
-    <p><input type="submit" value="Submit" /></p>
-    <p> Back to Main Page  <a th:href="@{/user/welcome}"> Main</a></p>
+    <p><input type="submit" value="Submit"/></p>
 </form>
+<div>
+    <p> Back to Main Page <a th:href="@{/welcome}"> Main</a></p>
+</div>
 </body>
 </html>

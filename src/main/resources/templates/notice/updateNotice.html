@@ -1,20 +1,35 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<h1>Update notice: </h1>
-
-<form th:action="@{/notice/update}" th:object="${notice}" method="post">
-    <p><input type="hidden" th:value="*{id}"/></p>
-    <p> Title: <input type="text" th:field="*{title}"/></p>
-    <p> Summary: <input type="text" th:field="*{summary}"/></p>
-    <p> Expiration Date: <input type="text" th:field="*{expirationDate}"/></p>
-
-    <p><input type="submit" value="Submit"/></p>
+    <div class="card-body">
+        <form th:action="@{/notice/update}" method="post" th:object="${notice}">
+            <div>
+                <label th:for="title"> Title</label>
+                <p th:input type="text" placeholder=" Title">
+                    <input th:field="*{title}"/>
+                <p th:errors="*{title}"></p>
+            </div>
+            <div>
+                <label th:for="summary">summary</label>
+                <p th:input type="text" placeholder="summary">
+                    <input th:field="*{summary}"/>
+                <p th:errors="*{summary}"></p>
+            </div>
+            <div>
+                <label th:for="expirationDate">expirationDate</label>
+                <p th:input type="text" placeholder="expirationDate">
+                    <input th:field="*{expirationDate}"/>
+                <p th:errors="*{expirationDate}"></p>
+            </div>
+            <input type="hidden" th:field="*{id}"/>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
 </form>
-<a th:href="@{/welcome}"> Back to Main Page </a>
 </body>
 </html>

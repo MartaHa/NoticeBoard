@@ -24,6 +24,10 @@ public class AdminController {
         this.userRepository = userRepository;
         this.userService = userService;
     }
+
+
+    //addadmin
+
     @GetMapping("/addAnAdmin")
     public String showFormUser(Model model) {
         model.addAttribute("users", new User());

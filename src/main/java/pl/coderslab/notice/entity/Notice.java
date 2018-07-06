@@ -1,19 +1,17 @@
 package pl.coderslab.notice.entity;
 
-
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-@NoArgsConstructor
-@AllArgsConstructor
+import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Builder
 public class Notice {
 
     @Id
@@ -22,19 +20,15 @@ public class Notice {
     private String title;
     private String summary;
     private String expirationDate;
+//    private LocalDateTime created;
 
     @ManyToOne
     private User user;
 
-
-    @OneToMany
-    private List<Comment> comment = new ArrayList<>();
-
-
-//
-//    @ManyToMany
-//    private List<Category> category = new ArrayList<>();
-
+//    @PrePersist
+//    protected void onCreate() {
+//        created = LocalDateTime.now();
+//    }
 
 }
 
