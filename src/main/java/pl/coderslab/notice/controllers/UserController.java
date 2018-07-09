@@ -64,8 +64,9 @@ public class UserController {
     @GetMapping("/update")
     public String showFormUser(Model model, @AuthenticationPrincipal CurrentUser customUser) {
         User user = customUser.getUser();
-        long userId = user.getId();
-        userRepository.findById(userId).ifPresent(o -> model.addAttribute("user", o));
+//        long userId = user.getId();
+
+       model.addAttribute("user", user);
         return "user/updateUser";
     }
 
@@ -73,7 +74,7 @@ public class UserController {
     public String performUpdate(@ModelAttribute User user) {
         userRepository.save(user);
         ;
-        return "/welcome";
+        return "redirect:/welcome";
     }
 
 

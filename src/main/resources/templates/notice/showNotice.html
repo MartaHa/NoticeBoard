@@ -26,7 +26,7 @@
 
         <td> <a th:href="@{/notice/update/{id}/(id=${notice.id})}"> EDIT </a> </td>
         <td> <a th:href="@{/notice/delete/{id}/(id=${notice.id})}"> DELETE </a> </td>
-        <td > <a th:href="@{/category/addCategoryToNotice/{id}/(id=${notice.id})}">  ADD CATEGORY </a> </td>
+        <td  sec:authorize="hasAuthority('ADMIN')" > <a th:href="@{/category/addCategoryToNotice/{id}/(id=${notice.id})}">  ADD CATEGORY </a> </td>
 
     </tr>
 
@@ -40,5 +40,17 @@
 <!--<tr th:each="notice: ${notices}">-->
 <!--<a th:href="@{/comment/addComment/{id}/(id=${notice.id})}"> Leave a comment here </a>-->
 <!--</tr>-->
+<div>
+    <p> Back o Main<a th:href="@{/welcome}"> Main </a>
+    </p>
+</div>
+<div sec:authorize="hasAuthority('ADMIN')">
+        <p> Back o Main<a th:href="@{/welcomeAd}"> Main </a>
+        </p>
+</div>
+<div sec:authorize="hasAuthority('USER')">
+    <p> Back o Main<a th:href="@{/welcome}"> Main </a>
+    </p>
+</div>
 </body>
 </html>
