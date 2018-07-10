@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card-body">
+    <form th:action="@{/notice/addCategoryToNotice}" method="post" th:object="${notice}">
+        <div>
+            <label th:for="category">category</label>
+            <p> Select category
+                <select class="form-control" name="category" id="category">
+                    <option value="0">Categories</option>
+                    <option th:each="category : ${categories}"
+                            th:value="${category.id}"
+                            th:text="${category.name}">
+                    </option>
+                </select>
+            </p>
+            <p><input type="submit" value="Submit" /></p>
+        </div>
+        <input type="hidden" th:field="*{id}"/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</div>
+</form>
+<div>
+    <p> Back o Main<a th:href="@{/welcomeAd}"> Main </a>
+    </p>
+</div>
+</body>
+</html>

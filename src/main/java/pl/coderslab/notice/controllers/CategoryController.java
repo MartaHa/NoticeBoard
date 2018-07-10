@@ -60,21 +60,19 @@ public class CategoryController {
 
 //addCategoryToNotice
 
-//    @GetMapping("/addCategoryToNotice")
-//    public String showForm(Model model) {
-//
-//        model.addAttribute("categories", categoryRepository.findAll());
-//        return "category/showCategories";
-//    }
-//
-//    @PostMapping("/addCategoryToNotice/{id}")
-//    public String performUpdate(@ModelAttribute Category category, @PathVariable long id) {
-//        Notice n = noticeRepository.getOne(id);
-//        List <Category> c =n.getCategory();
-//        c.add(category);
-//        noticeRepository.save(n);
-//        return "redirect:/category/showCategory";
-//
-//    }
+    @GetMapping("addCategoryToNotice/{id}")
+    public String showForm(Model model, long id) {
+
+        model.addAttribute("notice", categoryRepository.findById(id));
+        return "notice/updateNotice";
+    }
+
+    @PostMapping("/addCategoryToNotice")
+    public String performUpdate(@ModelAttribute Category category, @ModelAttribute Notice notice) {
+        categoryRepository.save(category);
+        noticeRepository.save(notice);
+        return "redirect:/welcomeAd";
+
+    }
 
 }

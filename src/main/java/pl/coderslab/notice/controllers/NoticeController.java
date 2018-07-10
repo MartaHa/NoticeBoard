@@ -8,13 +8,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.notice.entity.Category;
 import pl.coderslab.notice.entity.Notice;
 import pl.coderslab.notice.entity.User;
+import pl.coderslab.notice.repository.CategoryRepository;
 import pl.coderslab.notice.repository.NoticeRepository;
 import pl.coderslab.notice.service.CurrentUser;
 
 import javax.validation.Valid;
 import javax.validation.Validator;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,10 +30,11 @@ public class NoticeController {
     Validator validator;
 
     private final NoticeRepository noticeRepository;
+    private final CategoryRepository categoryRepository;
 
-
-    public NoticeController(NoticeRepository noticeRepository) {
+    public NoticeController(NoticeRepository noticeRepository, CategoryRepository categoryRepository) {
         this.noticeRepository = noticeRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     //addNotice
@@ -77,7 +81,7 @@ public class NoticeController {
     //updateNotice
 
     @GetMapping("/update/{id}")
-    public String showForm(Model model, @PathVariable long id) {
+    public String showFormNotice (Model model, @PathVariable long id) {
         model.addAttribute("notice",  noticeRepository.findById(id));
         return "notice/updateNotice";
     }
@@ -90,6 +94,29 @@ public class NoticeController {
         return "redirect:/notice/showAll";
 
     }
+
+    @ModelAttribute("categories")
+    public Collection<Category> populateCategories() {
+        List<Category> categories = categoryRepository.findAll();
+        return categories;
+    }
+    //addCategoryToNotice
+
+    @GetMapping("addCategoryToNotice/{id}")
+    public String showForm(Model model, @PathVariable long id) {
+
+        model.addAttribute("notice", categoryRepository.findById(id));
+        return "notice/addCategory";
+    }
+
+    @PostMapping("/addCategoryToNotice")
+    public String performUpdate(@ModelAttribute Category category, @ModelAttribute Notice notice) {
+        categoryRepository.save(category);
+        noticeRepository.save(notice);
+        return "redirect:/welcomeAd";
+
+    }
+
 
 //deletenotice
 //

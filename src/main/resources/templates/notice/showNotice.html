@@ -21,12 +21,13 @@
         <td th:text="${notice.title}"></td>
         <td th:text="${notice.summary}"></td>
         <td th:text="${notice.expirationDate}"></td>
+        <td></td>
         <!--<td th:text="${notice.category.name}"></td>-->
 
 
-        <td> <a th:href="@{/notice/update/{id}/(id=${notice.id})}"> EDIT </a> </td>
-        <td> <a th:href="@{/notice/delete/{id}/(id=${notice.id})}"> DELETE </a> </td>
-        <td  sec:authorize="hasAuthority('ADMIN')" > <a th:href="@{/category/addCategoryToNotice/{id}/(id=${notice.id})}">  ADD CATEGORY </a> </td>
+        <td sec:authorize="hasRole('USER')"> <a th:href="@{/notice/update/{id}/(id=${notice.id})}"> EDIT </a> </td>
+        <td sec:authorize="hasRole('USER')"> <a th:href="@{/notice/delete/{id}/(id=${notice.id})}"> DELETE </a> </td>
+        <td  sec:authorize="hasRole('ADMIN')" > <a th:href="@{/notice/addCategoryToNotice/{id}/(id=${notice.id})}">  ADD CATEGORY </a> </td>
 
     </tr>
 
@@ -44,11 +45,11 @@
     <p> Back o Main<a th:href="@{/welcome}"> Main </a>
     </p>
 </div>
-<div sec:authorize="hasAuthority('ADMIN')">
+<div sec:authorize="hasRole('ADMIN')">
         <p> Back o Main<a th:href="@{/welcomeAd}"> Main </a>
         </p>
 </div>
-<div sec:authorize="hasAuthority('USER')">
+<div sec:authorize="hasRole('USER')">
     <p> Back o Main<a th:href="@{/welcome}"> Main </a>
     </p>
 </div>

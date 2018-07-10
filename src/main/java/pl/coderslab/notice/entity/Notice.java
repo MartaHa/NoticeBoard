@@ -25,6 +25,9 @@ public class Notice {
     @ManyToOne
     private User user;
 
+    @ManyToOne
+    private Category category;
+
 //    @PrePersist
 //    protected void onCreate() {
 //        created = LocalDateTime.now();
