@@ -8,17 +8,14 @@
 <div class="card-body">
     <form th:action="@{/notice/addCategoryToNotice}" method="post" th:object="${notice}">
         <div>
-            <label th:for="category">category</label>
-            <p> Select category
-                <select class="form-control" name="category" id="category">
-                    <option value="0">Categories</option>
-                    <option th:each="category : ${categories}"
+            <label th:for="categories">Categories</label>
+            <p th:input type="text" placeholder="categories">
+                <select th:field="*{categories}" multiple="true">
+                    <option th:each="user : ${categoriesList}"
                             th:value="${category.id}"
-                            th:text="${category.name}">
-                    </option>
+                            th:text="${category.name}"/>
                 </select>
-            </p>
-            <p><input type="submit" value="Submit" /></p>
+            <p th:errors="*{categories}"></p>
         </div>
         <input type="hidden" th:field="*{id}"/>
         <button type="submit" class="btn btn-primary">Submit</button>

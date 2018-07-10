@@ -9,6 +9,8 @@ import org.hibernate.validator.constraints.NotBlank;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -25,8 +27,8 @@ public class Notice {
     @ManyToOne
     private User user;
 
-    @ManyToOne
-    private Category category;
+    @ManyToMany
+    private List<Category> categories;
 
 //    @PrePersist
 //    protected void onCreate() {

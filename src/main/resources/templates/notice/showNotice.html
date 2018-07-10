@@ -7,13 +7,13 @@
 <body>
 <table>
     <tr>
-        <th th:text="'Title'"> </th>
-        <th th:text="'Summary'"> </th>
-        <th th:text="'Expiration date'"> </th>
-        <th th:text="'Category'"> </th>
-        <th th:text="''"> </th>
-        <th th:text="''"> </th>
-        <th th:text="''"> </th>
+        <th th:text="'Title'"></th>
+        <th th:text="'Summary'"></th>
+        <th th:text="'Expiration date'"></th>
+        <th th:text="'Category'"></th>
+        <th th:text="''"></th>
+        <th th:text="''"></th>
+        <th th:text="''"></th>
 
     </tr>
 
@@ -21,20 +21,24 @@
         <td th:text="${notice.title}"></td>
         <td th:text="${notice.summary}"></td>
         <td th:text="${notice.expirationDate}"></td>
-        <td></td>
-        <!--<td th:text="${notice.category.name}"></td>-->
+        <td>
+            <!--<span th:each="notice: ${notice.category}">-->
+                <!--<b th:text="${category.name}"/>-->
+            <!--</span>-->
+        </td>
 
 
-        <td sec:authorize="hasRole('USER')"> <a th:href="@{/notice/update/{id}/(id=${notice.id})}"> EDIT </a> </td>
-        <td sec:authorize="hasRole('USER')"> <a th:href="@{/notice/delete/{id}/(id=${notice.id})}"> DELETE </a> </td>
-        <td  sec:authorize="hasRole('ADMIN')" > <a th:href="@{/notice/addCategoryToNotice/{id}/(id=${notice.id})}">  ADD CATEGORY </a> </td>
+        <td sec:authorize="hasRole('USER')"><a th:href="@{/notice/update/{id}/(id=${notice.id})}"> EDIT </a></td>
+        <td sec:authorize="hasRole('USER')"><a th:href="@{/notice/delete/{id}/(id=${notice.id})}"> DELETE </a></td>
+        <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/notice/addCategoryToNotice/{id}/(id=${notice.id})}"> ADD
+            CATEGORY </a></td>
 
     </tr>
 
 </table>
 <!--&lt;!&ndash;<table>&ndash;&gt;-->
 <!--&lt;!&ndash;<tr th:each="notice: ${notices}">&ndash;&gt;-->
-    <!--&lt;!&ndash;<td th:text="${notice.comment}"> </td>&ndash;&gt;-->
+<!--&lt;!&ndash;<td th:text="${notice.comment}"> </td>&ndash;&gt;-->
 
 <!--&lt;!&ndash;</tr>&ndash;&gt;-->
 <!--&lt;!&ndash;</table>&ndash;&gt;-->
@@ -45,11 +49,11 @@
     <p> Back o Main<a th:href="@{/welcome}"> Main </a>
     </p>
 </div>
-<div sec:authorize="hasRole('ADMIN')">
-        <p> Back o Main<a th:href="@{/welcomeAd}"> Main </a>
-        </p>
+<div sec:authorize="hasAuthority('ADMIN')">
+    <p> Back o Main<a th:href="@{/welcomeAd}"> Main </a>
+    </p>
 </div>
-<div sec:authorize="hasRole('USER')">
+<div sec:authorize="hasAuthority('USER')">
     <p> Back o Main<a th:href="@{/welcome}"> Main </a>
     </p>
 </div>
