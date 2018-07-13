@@ -95,7 +95,7 @@ public class NoticeController {
 
     }
 
-    @ModelAttribute("categories")
+    @ModelAttribute("categoriesList")
     public Collection<Category> populateCategories() {
         List<Category> categories = categoryRepository.findAll();
         return categories;
@@ -110,8 +110,7 @@ public class NoticeController {
     }
 
     @PostMapping("/addCategoryToNotice")
-    public String performUpdate(@ModelAttribute Category category, @ModelAttribute Notice notice) {
-        categoryRepository.save(category);
+    public String performUpdateToNotice( @ModelAttribute Notice notice) {
         noticeRepository.save(notice);
         return "redirect:/welcomeAd";
 

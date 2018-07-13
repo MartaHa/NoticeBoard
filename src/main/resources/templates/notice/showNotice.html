@@ -22,9 +22,9 @@
         <td th:text="${notice.summary}"></td>
         <td th:text="${notice.expirationDate}"></td>
         <td>
-            <!--<span th:each="notice: ${notice.category}">-->
-                <!--<b th:text="${category.name}"/>-->
-            <!--</span>-->
+            <span th:each="category: ${notice.categories}">
+                <b th:text="${category.name}"/>
+            </span>
         </td>
 
 

@@ -12,6 +12,7 @@ import pl.coderslab.notice.repository.NoticeRepository;
 
 import javax.validation.Valid;
 import javax.validation.Validator;
+import java.util.Collection;
 import java.util.List;
 
 @Controller
@@ -57,11 +58,17 @@ public class CategoryController {
         return "category/showCategories";
     }
 
+    //categoriesList
+    @ModelAttribute("categoriesList")
+    public Collection<Category> populateCategories() {
+        List<Category> categories = categoryRepository.findAll();
+        return categories;
+    }
 
 //addCategoryToNotice
 
     @GetMapping("addCategoryToNotice/{id}")
-    public String showForm(Model model, long id) {
+    public String showForm(Model model, @PathVariable long id) {
 
         model.addAttribute("notice", categoryRepository.findById(id));
         return "notice/updateNotice";
