@@ -45,10 +45,7 @@
 <!--<tr th:each="notice: ${notices}">-->
 <!--<a th:href="@{/comment/addComment/{id}/(id=${notice.id})}"> Leave a comment here </a>-->
 <!--</tr>-->
-<div>
-    <p> Back o Main<a th:href="@{/welcome}"> Main </a>
-    </p>
-</div>
+
 <div sec:authorize="hasAuthority('ADMIN')">
     <p> Back o Main<a th:href="@{/welcomeAd}"> Main </a>
     </p>
