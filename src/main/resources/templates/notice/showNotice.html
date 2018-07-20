@@ -14,6 +14,7 @@
         <th th:text="''"></th>
         <th th:text="''"></th>
         <th th:text="''"></th>
+        <th th:text="''"></th>
 
     </tr>
 
@@ -32,19 +33,13 @@
         <td sec:authorize="hasRole('USER')"><a th:href="@{/notice/delete/{id}/(id=${notice.id})}"> DELETE </a></td>
         <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/notice/addCategoryToNotice/{id}/(id=${notice.id})}"> ADD
             CATEGORY </a></td>
+        <td><a th:href="@{/comment/add/{id}/(id=${notice.id})}"> ADD A COMMENT </a></td>
+
 
     </tr>
 
 </table>
-<!--&lt;!&ndash;<table>&ndash;&gt;-->
-<!--&lt;!&ndash;<tr th:each="notice: ${notices}">&ndash;&gt;-->
-<!--&lt;!&ndash;<td th:text="${notice.comment}"> </td>&ndash;&gt;-->
 
-<!--&lt;!&ndash;</tr>&ndash;&gt;-->
-<!--&lt;!&ndash;</table>&ndash;&gt;-->
-<!--<tr th:each="notice: ${notices}">-->
-<!--<a th:href="@{/comment/addComment/{id}/(id=${notice.id})}"> Leave a comment here </a>-->
-<!--</tr>-->
 
 <div sec:authorize="hasAuthority('ADMIN')">
     <p> Back o Main<a th:href="@{/welcomeAd}"> Main </a>

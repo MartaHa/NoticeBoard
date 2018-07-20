@@ -10,13 +10,13 @@ import javax.persistence.*;
 @Setter
 @Entity
 public class Comment {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String commentText;
 
-
-//    @ManyToOne
-//    private Notice notice;
+    @ManyToOne
+    private Notice notice;
 
 }

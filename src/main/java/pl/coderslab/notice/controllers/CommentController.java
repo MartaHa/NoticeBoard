@@ -29,28 +29,26 @@ public class CommentController {
     public CommentController(CommentRepository commentRepository, NoticeRepository noticeRepository) {
         this.commentRepository = commentRepository;
         this.noticeRepository = noticeRepository;
-    }}
+    }
 
     //addComment
 
 
-//    @RequestMapping("/addComment/{id}")
-//    public String showFormUser(Model model, @PathVariable long id){
-//        model.addAttribute("comment", new Comment());;
-//        return "comment/commentform";
-//    }
+    @RequestMapping("/add/{id}")
+    public String showFormUser(Model model, @PathVariable long id) {
+        Notice thisNotice = noticeRepository.getOne(id);
+        Comment newComment = new Comment();
+        newComment.setNotice(thisNotice);
+        model.addAttribute("comment", newComment);
+        return "comment/addComment";
+    }
 
-//    @PostMapping("/addComment/{id}")
-//    public String addComment(@ModelAttribute @Valid Comment comment, BindingResult result, @PathVariable long id) {
-//        if (result.hasErrors()) {
-//            return "category/addCategory";
-//        }
-//        commentRepository.save(comment);
-//        Notice n = noticeRepository.getOne(id);
-//        List <Comment> c = n.getComment();
-//        c.add(comment);
-//        noticeRepository.save(n);
-//
-//        return "redirect:/notice/showAll";
-//    }
-//}
+    @PostMapping("/add")
+    public String addComment(@ModelAttribute @Valid Comment comment, BindingResult result) {
+        if (result.hasErrors()) {
+            return "comment/addComment";
+        }
+        commentRepository.save(comment);
+        return "redirect:/notice/showAll";
+    }
+}

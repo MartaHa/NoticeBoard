@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--comment-->
+<div class="card-body">
+    <form th:action="@{/comment/add}" method="post" th:object="${comment}">
+        <div>
+            <label th:for="commentText"> Leave a comment here</label>
+            <p th:input type="text" placeholder=" commentText">
+                <input th:field="*{commentText}"/>
+            <p th:errors="*{commentText}"></p>
+        </div>
+        <p><input type="hidden" th:value="*{id}"/></p>
+        <button type="submit" class="btn btn-primary">Leave a comment</button>
+    </form>
+</div>
+</div>
+</form>
+</body>
+</html>

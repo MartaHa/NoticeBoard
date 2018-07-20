@@ -30,6 +30,9 @@ public class Notice {
     @ManyToMany
     private List<Category> categories;
 
+    @OneToMany
+    private List <Comment> comments;
+
 //    @PrePersist
 //    protected void onCreate() {
 //        created = LocalDateTime.now();
