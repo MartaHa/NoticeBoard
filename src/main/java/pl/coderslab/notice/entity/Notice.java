@@ -30,7 +30,8 @@ public class Notice {
     @ManyToMany
     private List<Category> categories;
 
-    @OneToMany
+    @OneToMany(mappedBy = "notice",
+            cascade = CascadeType.ALL)
     private List <Comment> comments;
 
 //    @PrePersist

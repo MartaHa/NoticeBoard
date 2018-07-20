@@ -39,6 +39,12 @@
     </tr>
 
 </table>
+<table>
+<tr th:each="notice: ${notices}">>
+    <p><a th:href="@{/comment/viewComments/{id}/(id=${notice.id})}"> View comments.... </a>
+    </p>
+</tr>
+</table>
 
 
 <div sec:authorize="hasAuthority('ADMIN')">

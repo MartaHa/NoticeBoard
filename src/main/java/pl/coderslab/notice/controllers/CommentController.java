@@ -51,4 +51,21 @@ public class CommentController {
         commentRepository.save(comment);
         return "redirect:/notice/showAll";
     }
+
+    //showAllComments
+
+    @GetMapping("/showComments/{id}")
+    public String showAll(Model model, @PathVariable long id) {
+        Notice notice = noticeRepository.getOne(id);
+        List<Comment> allComments = notice.getComments();
+        if (allComments.isEmpty()) {
+            return "comment/noComments";
+        } else {
+            model.addAttribute("comments", commentRepository.findAll());
+            return "comment/showComments";
+
+        }
+
+
+    }
 }

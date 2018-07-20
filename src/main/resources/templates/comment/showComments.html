@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show comments</title>
+</head>
+<body>
+<table>
+    <tr th:each="comment: ${comments}">
+        <td th:text="${comment.commentText}"></td>
+    </tr>
+</table>
+<div sec:authorize="hasRole('USER')">
+    <p> Back o Main<a th:href="@{/welcome}"> Main </a>
+    </p>
+</div>
+<div sec:authorize="hasRole('ADMIN')">
+    <p> Back o Main<a th:href="@{/welcomeAd}"> Main </a>
+    </p>
+</div>
+</body>
+</html>
