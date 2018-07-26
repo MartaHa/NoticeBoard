@@ -29,6 +29,9 @@
 </div>
 <div>
 <a th:href="@{category/addCategory}"> Add a category </a> <br>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Wyloguj"/>
+    </form>
 </div>
 </body>
 </html>

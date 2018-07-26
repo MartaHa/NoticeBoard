@@ -16,6 +16,9 @@
 <div>
     <p> Back o Main<a th:href="@{/welcomeAd}"> Main </a>
     </p>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Wyloguj"/>
+    </form>
 </div>
 </body>
 </html>
