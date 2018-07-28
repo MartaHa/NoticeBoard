@@ -16,7 +16,7 @@ public class HomeController {
 
     @GetMapping("/index")
     public String index() {
-        return "layoutAdmin";
+        return "index";
     }
 
 
