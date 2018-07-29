@@ -63,7 +63,7 @@ public class AdminController {
     public String showUser(@AuthenticationPrincipal CurrentUser customUser, Model model) {
         User entityUser = customUser.getUser();
         model.addAttribute("user", entityUser);
-        return "/admin/showAdmin";
+        return "admin/showAdmin";
 
     }
 

@@ -1,12 +1,12 @@
+
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:>
-<html lang="pl-PL">
-<head>
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layoutAll">
+
 <body>
+<section layout:fragment="content">
+
 <h1>Form</h1>
 <div class="card-body">
     <form th:action="@{/user/add}" method="post" th:object="${user}">
@@ -49,15 +49,14 @@
         <div>
             <label th:for="dateOfBirth">Dte of Birth</label>
             <p th:input type="text" placeholder="dateOfBirth">
-                <input th:field="*{dateOfBirth`}"/>
+                <input th:field="*{dateOfBirth}"/>
             <p th:errors="*{dateOfBirth}"></p>
         </div>
         <input type="hidden" th:field="*{id}"/>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
-</div<p> Back o Main<a th:href="@{/welcome}"> Main </a>
-</p>>
+</section>
 </body>
 </html>
 

@@ -1,38 +1,41 @@
+
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:>
-<html lang="pl-PL">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
+
 <body>
-<table>
-    <tr>
-        <th th:text="'Username'"></th>
-        <th th:text="'Password'"></th>
-        <th th:text="'First name'"></th>
-        <th th:text="'Last name'"></th>
-        <th th:text="'Email'"></th>
-        <th th:text="'Phone number'"></th>
-        <th th:text="'Date of birth'"></th>
-        <th th:text="''"></th>
-        <th th:text="''"></th>
+<section layout:fragment="content">
 
-    </tr>
 
-    <tr th:each="user1: ${user}">
-        <td th:text="${user1.username}"></td>
-        <td th:text="${user1.password}"></td>
-        <td th:text="${user1.firstName}"></td>
-        <td th:text="${user1.lastName}"></td>
-        <td th:text="${user.email}"></td>
-        <td th:text="${user.phoneNumber}"></td>
-        <td th:text="${user1.dateOfBirth}"></td>
+    <h3> Your details </h3>
+    <div>
+    <table>
+        <td>
+            <th th:text="'Username'"></th>
+            <th th:text="'Password'"></th>
+            <th th:text="'First name'"></th>
+            <th th:text="'Last name'"></th>
+            <th th:text="'Email'"></th>
+            <th th:text="'Phone number'"></th>
+            <th th:text="'Date of birth'"></th>
+            <th th:text="''"></th>
+            <th th:text="''"></th>
 
-    </tr>
-</table>
-</p>
-<p> Back o Main<a th:href="@{/welcome}"> Main </a>
-</p>
+        </td>
+
+        <tr th:each="user1: ${user}">
+            <td th:text="${user1.username}"></td>
+            <td th:text="${user1.password}"></td>
+            <td th:text="${user1.firstName}"></td>
+            <td th:text="${user1.lastName}"></td>
+            <td th:text="${user1.email}"></td>
+            <td th:text="${user1.phoneNumber}"></td>
+            <td th:text="${user1.dateOfBirth}"></td>
+
+        </tr>
+    </table>
+    </div>
+</section>
 </body>
 </html>

@@ -1,8 +1,11 @@
+
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:>
-<html lang="pl-PL">
-<head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
+
 <body>
+<section layout:fragment="content">
 <h1>Your profile: </h1>
 
 <form th:action="@{/admin/addAnAdmin}" th:object="${users}" method="post">
@@ -17,6 +20,6 @@
     <p><input type="submit" value="Submit"/></p>
 </form>
 
-
+</section>
 </body>
 </html>
