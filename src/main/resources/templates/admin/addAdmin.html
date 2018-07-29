@@ -1,8 +1,9 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org" xmlns:>
+<html lang="pl-PL">
+<head>
 <body>
-<h1>Your details: </h1>
+<h1>Your profile: </h1>
 
 <form th:action="@{/admin/addAnAdmin}" th:object="${users}" method="post">
     <p><input type="hidden" th:value="*{id}"/></p>
@@ -13,10 +14,8 @@
     <p>Email: <input type="text" th:field="*{email}"/></p>
     <p>Phone Number: <input type="text" th:field="*{phoneNumber}"/></p>
     <p>Date of Birth: <input type="text" th:field="*{dateOfBirth}" th:errorClass="error"/></p>
-
     <p><input type="submit" value="Submit"/></p>
 </form>
-
 
 
 </body>

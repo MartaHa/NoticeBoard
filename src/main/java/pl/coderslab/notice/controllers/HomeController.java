@@ -1,4 +1,5 @@
 package pl.coderslab.notice.controllers;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -9,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 public class HomeController {
 
 
-    @GetMapping("/")
+    @GetMapping("/layout")
     public String home() {
-        return "home";
+        return "layout";
     }
 
     @GetMapping("/index")
@@ -23,6 +24,11 @@ public class HomeController {
     @GetMapping("/login")
     public String login() {
         return "login";
+    }
+
+    @GetMapping("/logout")
+    public String logout() {
+        return "logout";
     }
 
     @GetMapping("/checkrole")

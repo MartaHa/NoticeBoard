@@ -1,5 +1,6 @@
 package pl.coderslab.notice.controllers;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.notice.entity.User;
 import pl.coderslab.notice.repository.UserRepository;
+import pl.coderslab.notice.service.CurrentUser;
 import pl.coderslab.notice.service.UserService;
 
 import javax.validation.Valid;
@@ -48,8 +50,22 @@ public class AdminController {
     //redirectpage
 
     @GetMapping("/welcomeAd")
-    public String redirectAdmin(){
+    public String redirectAdmin() {
         return "admin/welcomeAdmin";
     }
+
+
+//showAdmin
+
+
+    @GetMapping("/showAdmin")
+
+    public String showUser(@AuthenticationPrincipal CurrentUser customUser, Model model) {
+        User entityUser = customUser.getUser();
+        model.addAttribute("user", entityUser);
+        return "/admin/showAdmin";
+
+    }
+
 
 }

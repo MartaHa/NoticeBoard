@@ -1,11 +1,10 @@
+
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome User</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
 <body>
+<section layout:fragment="content">
 <h3>Hello what do you want to do : </h3>
 <div>
     <p>
@@ -29,5 +28,6 @@
         <a th:href="@{/user/delete}"> Delete my Profile </a> <br>
     </p>
 </div>
+</section>
 </body>
 </html>
