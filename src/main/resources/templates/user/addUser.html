@@ -1,14 +1,14 @@
 
+
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-      layout:decorator="layoutAll">
-
+      layout:decorate="~{layoutAll}">
 <body>
 <section layout:fragment="content">
 
-<h1>Form</h1>
 <div class="card-body">
+    <h1>Form</h1>
     <form th:action="@{/user/add}" method="post" th:object="${user}">
         <div>
             <label th:for="username"> Username</label>
@@ -47,7 +47,7 @@
             <p th:errors="*{phoneNumber}"></p>
         </div>
         <div>
-            <label th:for="dateOfBirth">Dte of Birth</label>
+            <label th:for="dateOfBirth">Date of Birth</label>
             <p th:input type="text" placeholder="dateOfBirth">
                 <input th:field="*{dateOfBirth}"/>
             <p th:errors="*{dateOfBirth}"></p>

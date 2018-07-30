@@ -28,7 +28,7 @@ public class HomeController {
 
     @GetMapping("/logout")
     public String logout() {
-        return "home";
+        return "index";
     }
 
     @GetMapping("/checkrole")

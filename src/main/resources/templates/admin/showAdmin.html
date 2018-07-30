@@ -1,47 +1,41 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-      layout:decorator="layoutAdmin">
+      layout:decorate="~{layoutAdmin}">
 
 <body>
 <section layout:fragment="content">
 
-    <div class="card mb-3">
-        <div class="card-header">
-            <i class="fa fa-area-chart"></i>  Your profile
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <h3>Your profile details</h3>
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <div>
+
+        <h3>Your profile details</h3>
+        <table>
 
 
-                    <tr>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Date of Birth</th>
-                        <th>Update</th>
-                        <th>Delete</th>
-                    </tr>
-                    <tr th:each="user1: ${user}">
-                        <td th:text="${user1.username}"/>
-                        <td th:text="${user1.password}"/>
-                        <td th:text="${user1.firstName}"/>
-                        <td th:text="${user1.lastName}"/>
-                        <td th:text="${user1.email}"/>
-                        <td th:text="${user1.phoneNumber}"/>
-                        <td th:text="${user1.dateOfBirth}"/>
-                        <td> <a th:href="@{/user/update/{id}/(id=${user.id})}">UPDATE</a> </td>
-                        <td><a th:href="@{/user/delete/{id}/(id=${user.id})}">DELETE</a></td>
-                    </tr>
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Date of Birth</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="user1: ${user}">
+                <td th:text="${user1.username}"/>
+                <td th:text="${user1.password}"/>
+                <td th:text="${user1.firstName}"/>
+                <td th:text="${user1.lastName}"/>
+                <td th:text="${user1.email}"/>
+                <td th:text="${user1.phoneNumber}"/>
+                <td th:text="${user1.dateOfBirth}"/>
+                <td><a th:href="@{/user/update}">UPDATE</a></td>
+                <td><a th:href="@{/user/delete}">DELETE</a></td>
+            </tr>
 
-                </table>
-            </div>
-        </div>
+        </table>
     </div>
 
 </section>

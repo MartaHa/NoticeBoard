@@ -1,41 +1,43 @@
-
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-      layout:decorator="layout">
+      layout:decorate="~{layout}">
 
 <body>
 <section layout:fragment="content">
 
-
-    <h3> Your details </h3>
     <div>
-    <table>
-        <td>
-            <th th:text="'Username'"></th>
-            <th th:text="'Password'"></th>
-            <th th:text="'First name'"></th>
-            <th th:text="'Last name'"></th>
-            <th th:text="'Email'"></th>
-            <th th:text="'Phone number'"></th>
-            <th th:text="'Date of birth'"></th>
-            <th th:text="''"></th>
-            <th th:text="''"></th>
 
-        </td>
+        <h3>Your profile details</h3>
+        <table>
 
-        <tr th:each="user1: ${user}">
-            <td th:text="${user1.username}"></td>
-            <td th:text="${user1.password}"></td>
-            <td th:text="${user1.firstName}"></td>
-            <td th:text="${user1.lastName}"></td>
-            <td th:text="${user1.email}"></td>
-            <td th:text="${user1.phoneNumber}"></td>
-            <td th:text="${user1.dateOfBirth}"></td>
 
-        </tr>
-    </table>
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Date of Birth</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="user1: ${user}">
+                <td th:text="${user1.username}"/>
+                <td th:text="${user1.password}"/>
+                <td th:text="${user1.firstName}"/>
+                <td th:text="${user1.lastName}"/>
+                <td th:text="${user1.email}"/>
+                <td th:text="${user1.phoneNumber}"/>
+                <td th:text="${user1.dateOfBirth}"/>
+                <td><a th:href="@{/user/update}">UPDATE</a></td>
+                <td><a th:href="@{/user/delete}">DELETE</a></td>
+            </tr>
+
+        </table>
     </div>
+
 </section>
 </body>
 </html>

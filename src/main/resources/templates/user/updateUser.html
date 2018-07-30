@@ -1,61 +1,60 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:>
-<html lang="pl-PL">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <body>
-<h1>Form</h1>
-<div class="card-body">
-    <form th:action="@{/user/update}" method="post" th:object="${user}">
-        <div>
-            <label th:for="username"> Username</label>
-            <p th:input type="text" placeholder=" username">
-                <input th:field="*{username}"/>
-            <p th:errors="*{username}"></p>
-        </div>
-        <div>
-            <label th:for="password">Password</label>
-            <p th:input type="text" placeholder="password">
-                <input th:field="*{password}"/>
-            <p th:errors="*{password}"></p>
-        </div>
-        <div>
-            <label th:for="firstName">firstName</label>
-            <p th:input type="text" placeholder="firstName">
-                <input th:field="*{firstName}"/>
-            <p th:errors="*{firstName}"></p>
-        </div>
-        <div>
-            <label th:for="lastName">lastName</label>
-            <p th:input type="text" placeholder="lastName">
-                <input th:field="*{lastName}"/>
-            <p th:errors="*{lastName}"></p>
-        </div>
-        <div>
-            <label th:for="email">Email</label>
-            <p th:input type="text" placeholder="email">
-                <input th:field="*{email}"/>
-            <p th:errors="*{email}"></p>
-        </div>
-        <div>
-            <label th:for="phoneNumber">PhoneNumber</label>
-            <p th:input type="text" placeholder="phoneNumber">
-                <input th:field="*{phoneNumber}"/>
-            <p th:errors="*{phoneNumber}"></p>
-        </div>
-        <div>
-            <label th:for="dateOfBirth">Dte of Birth</label>
-            <p th:input type="text" placeholder="dateOfBirth">
-                <input th:field="*{dateOfBirth`}"/>
-            <p th:errors="*{dateOfBirth}"></p>
-        </div>
-        <input type="hidden" th:field="*{id}"/>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
-</div>
+<section layout:fragment="content">
+    <h3>Your profile:</h3>
+    <div class="card-body">
+        <form th:action="@{/user/update}" method="post" th:object="${user}">
+            <div>
+                <label th:for="username"> Username</label>
+                <p th:input type="text" placeholder=" username">
+                    <input th:field="*{username}"/>
+                <p th:errors="*{username}"></p>
+            </div>
+            <div>
+                <label th:for="password">Password</label>
+                <p th:input type="text" placeholder="password">
+                    <input th:field="*{password}"/>
+                <p th:errors="*{password}"></p>
+            </div>
+            <div>
+                <label th:for="firstName">firstName</label>
+                <p th:input type="text" placeholder="firstName">
+                    <input th:field="*{firstName}"/>
+                <p th:errors="*{firstName}"></p>
+            </div>
+            <div>
+                <label th:for="lastName">lastName</label>
+                <p th:input type="text" placeholder="lastName">
+                    <input th:field="*{lastName}"/>
+                <p th:errors="*{lastName}"></p>
+            </div>
+            <div>
+                <label th:for="email">Email</label>
+                <p th:input type="text" placeholder="email">
+                    <input th:field="*{email}"/>
+                <p th:errors="*{email}"></p>
+            </div>
+            <div>
+                <label th:for="phoneNumber">PhoneNumber</label>
+                <p th:input type="text" placeholder="phoneNumber">
+                    <input th:field="*{phoneNumber}"/>
+                <p th:errors="*{phoneNumber}"></p>
+            </div>
+            <div>
+                <label th:for="dateOfBirth">Date of Birth</label>
+                <p th:input type="text" placeholder="dateOfBirth">
+                    <input th:field="*{dateOfBirth}"/>
+                <p th:errors="*{dateOfBirth}"></p>
+            </div>
+            <input type="hidden" th:field="*{id}"/>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    </div>
+</section>
 </body>
 </html>
 

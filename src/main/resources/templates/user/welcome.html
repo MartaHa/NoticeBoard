@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-      layout:decorator="layout">
+      layout:decorate="~{layout}">
 
 <body>
 <section layout:fragment="content">
@@ -17,16 +17,6 @@
     <p>
         See all ads:
         <a th:href="@{notice/showAll}"> See all ads </a> <br>
-    </p>
-</div>
-<div>
-    <p> Edit my profile
-        <a th:href="@{/user/update}"> Update my Profile </a> <br>
-    </p>
-</div>
-<div>
-    <p> Delete my profile
-        <a th:href="@{/user/delete}"> Delete my Profile </a> <br>
     </p>
 </div>
 </section>

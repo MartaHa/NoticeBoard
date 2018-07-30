@@ -4,10 +4,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.notice.entity.User;
 import pl.coderslab.notice.repository.UserRepository;
 import pl.coderslab.notice.service.CurrentUser;
@@ -30,13 +27,13 @@ public class AdminController {
 
     //addadmin
 
-    @GetMapping("/addAnAdmin")
+    @GetMapping("/add")
     public String showFormUser(Model model) {
         model.addAttribute("users", new User());
         return "admin/addAdmin";
     }
 
-    @PostMapping("/addAnAdmin")
+    @PostMapping("/add")
 
     public String perform(@ModelAttribute @Valid User user, String role, BindingResult result) {
         if (result.hasErrors()) {
@@ -67,5 +64,30 @@ public class AdminController {
 
     }
 
+    //updateAdmin
+
+    @GetMapping("/update")
+    public String showFormUser(Model model, @AuthenticationPrincipal CurrentUser customUser) {
+        User user = customUser.getUser();
+        model.addAttribute("user", user);
+        return "admin/updateAdmin";
+    }
+
+    @PostMapping("/update")
+    public String performUpdate(@ModelAttribute User user) {
+        userRepository.save(user);
+        ;
+        return "redirect:/welcomeAd";
+    }
+
+
+
+    //deleteAdmin
+    @GetMapping("/delete")
+    public String delete( @AuthenticationPrincipal CurrentUser customUser) {
+        User user = customUser.getUser();
+        userRepository.delete(user);
+        return "redirect:/";
+    }
 
 }
