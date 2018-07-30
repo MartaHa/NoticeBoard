@@ -36,7 +36,7 @@ public class CategoryController {
     @GetMapping("/addCategory")
     public String showFormUser(Model model) {
         model.addAttribute("category",new Category());
-        return "category/addCategory";
+        return "addCategory";
     }
 
     @PostMapping("/addCategory")
@@ -59,7 +59,7 @@ public class CategoryController {
     }
 
     //categoriesList
-    @ModelAttribute("categoriesList")
+    @ModelAttribute("categories")
     public Collection<Category> populateCategories() {
         List<Category> categories = categoryRepository.findAll();
         return categories;
@@ -70,7 +70,7 @@ public class CategoryController {
     @GetMapping("addCategoryToNotice/{id}")
     public String showForm(Model model, @PathVariable long id) {
 
-        model.addAttribute("notice", categoryRepository.findById(id));
+        model.addAttribute("notice", noticeRepository.findById(id));
         return "notice/updateNotice";
     }
 

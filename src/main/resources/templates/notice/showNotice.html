@@ -1,10 +1,9 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:>
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layoutAll}">
 <body>
+<section layout:fragment="content">
 <table>
     <tr>
         <th th:text="'Title'"></th>
@@ -55,5 +54,6 @@
     <p> Back o Main<a th:href="@{/welcome}"> Main </a>
     </p>
 </div>
+</section>
 </body>
 </html>

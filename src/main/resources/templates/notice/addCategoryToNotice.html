@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layoutAdmin}">
+<body>
+<section layout:fragment="content">
+
+    <div class="card-body">
+        <form th:action="@{/notice/addCategoryToNotice}" method="post" th:object="${notice}">
+            <div>
+                <label th:for="category">Choose category</label>
+                <select class="form-control" name="category">
+                    <option value="0">Categories</option>
+                    <option th:each="category : ${categories}"
+                            th:value="${category.id}"
+                            th:text="${category.name}">
+                    </option>
+                </select>
+            </div>
+            <input type="hidden" th:field="*{id}"/>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    </div>
+    </form>
+    </section>
+    </body>
+</html>

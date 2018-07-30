@@ -59,7 +59,6 @@ public class NoticeController {
     }
 
 
-
     //showAll
 
     @GetMapping("/showAll")
@@ -81,8 +80,8 @@ public class NoticeController {
     //updateNotice
 
     @GetMapping("/update/{id}")
-    public String showFormNotice (Model model, @PathVariable long id) {
-        model.addAttribute("notice",  noticeRepository.findById(id));
+    public String showFormNotice(Model model, @PathVariable long id) {
+        model.addAttribute("notice", noticeRepository.findById(id));
         return "notice/updateNotice";
     }
 
@@ -105,17 +104,23 @@ public class NoticeController {
     @GetMapping("addCategoryToNotice/{id}")
     public String showForm(Model model, @PathVariable long id) {
 
-        model.addAttribute("notice", categoryRepository.findById(id));
-        return "notice/addCategory";
+        model.addAttribute("notice", noticeRepository.findById(id));
+        return "notice/addCategoryToNotice";
     }
 
     @PostMapping("/addCategoryToNotice")
-    public String performUpdateToNotice( @ModelAttribute Notice notice) {
+    public String performUpdateToNotice(@ModelAttribute Notice notice) {
         noticeRepository.save(notice);
         return "redirect:/welcomeAd";
 
     }
 
+    @GetMapping("showUsersNotice/{id}")
+    public String showUsersNotice(Model model, @PathVariable long id) {
+
+        model.addAttribute("notices", noticeRepository.findNoticesbyUserId(id));
+        return "admin/showNotices";
+    }
 
 //deletenotice
 //

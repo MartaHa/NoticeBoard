@@ -63,7 +63,7 @@ public class UserController {
     //updateUser
     @GetMapping("/update")
     public String showFormUser(Model model, @AuthenticationPrincipal CurrentUser customUser) {
-       model.addAttribute("user", customUser.getUser());
+        model.addAttribute("user", customUser.getUser());
         return "user/updateUser";
     }
 
@@ -89,9 +89,18 @@ public class UserController {
 
     //deleteAdmin
     @GetMapping("/delete")
-    public String delete( @AuthenticationPrincipal CurrentUser customUser) {
+    public String delete(@AuthenticationPrincipal CurrentUser customUser) {
         User user = customUser.getUser();
         userRepository.delete(user);
         return "redirect:/";
     }
+
+
+    //showUsersToAdmin
+    @GetMapping("/showUsersList")
+    public String showUsers(Model model) {
+        model.addAttribute("users", userRepository.findAll());
+        return "admin/showUsers";
+    }
 }
+

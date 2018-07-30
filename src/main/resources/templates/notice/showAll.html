@@ -1,16 +1,15 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layoutAll}">
 <body>
+<section layout:fragment="content">
+    <div>
+        <h3> Available notices</h3>
 <table>
     <tr>
         <th th:text="'Id'"> </th>
         <th th:text="'Title'"> </th>
-        <th th:text="'Summary'"> </th>
-        <th th:text="'Expiration date'"> </th>
         <th th:text="'Category'"> </th>
         <th th:text="''"> </th>
 
@@ -19,13 +18,14 @@
     <tr th:each="notice: ${notices}">
         <td th:text="${notice.id}"></td>
         <td th:text="${notice.title}"></td>
-        <td th:text="${notice.summary}"></td>
-        <td th:text="${notice.expirationDate}"></td>
+        <td></td>
         <!--<td th:text="${notice.category.name}"></td>-->
         <td>  <a th:href="@{/notice/showNotice/{id}/(id=${notice.id})}"> Show Details </a></td>
 
     </tr>
 </table>
+    </br>
+    </div>
 <div sec:authorize="hasRole('USER')">
     <p> Back o Main<a th:href="@{/welcome}"> Main </a>
     </p>
@@ -34,5 +34,6 @@
         <p> Back o Main<a th:href="@{/welcomeAd}"> Main </a>
         </p>
 </div>
+</section>
 </body>
 </html>
