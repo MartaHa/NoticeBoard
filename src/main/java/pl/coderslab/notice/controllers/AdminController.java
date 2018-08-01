@@ -74,9 +74,12 @@ public class AdminController {
     }
 
     @PostMapping("/update")
-    public String performUpdate(@ModelAttribute User user) {
+    public String performUpdate(@ModelAttribute @Valid User user,  BindingResult result) {
+        if (result.hasErrors()) {
+            return "admin/updateAdmin";
+        }
         userRepository.save(user);
-        ;
+
         return "redirect:/welcomeAd";
     }
 

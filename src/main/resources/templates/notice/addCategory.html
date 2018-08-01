@@ -4,31 +4,32 @@
       layout:decorate="~{layoutAdmin}">
 <body>
 <section layout:fragment="content">
-<body>
-<div class="card-body">
-    <form th:action="@{/notice/addCategoryToNotice}" method="post" th:object="${notice}">
-        <div>
-        <input type="hidden" th:field="*{id}"/>
-        </div>
-        <div>
-            <label th:for="notice">Notice</label>
-            <p th:input type="text" placeholder="categories">
-                <select th:field="*{categories}" multiple="true">
-                    <option th:each="category : ${categoriesList}"
-                            th:value="${category.id}"
-                            th:text="${category.name}"/>
-                </select>
-            <p th:errors="*{categories}"></p>
-        </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="card-body">
+        <form th:action="@{/notice/addCategoryToNotice}" method="post" th:object="${notice}">
+            <div>
+                <input type="hidden" th:field="*{id}"/>
+            </div>
+            <div>
+                <label th:for="notice">Notice</label>
+                <p th:input type="text" placeholder="categories">
+                    <select th:field="*{categories}" multiple="true">
+                        <option th:each="category : ${categoriesList}"
+                                th:value="${category.id}"
+                                th:text="${category.name}"/>
+                    </select>
+                <p th:errors="*{categories}"></p>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    </div>
     </form>
-</div>
-</div>
-</form>
-<div>
-    <p> Back o Main<a th:href="@{/welcomeAd}"> Main </a>
-    </p>
-</div>
+    <div>
+        <p> Back o Main<a th:href="@{/welcomeAd}"> Main </a>
+        </p>
+    </div>
+</section>
 </body>
 </html>

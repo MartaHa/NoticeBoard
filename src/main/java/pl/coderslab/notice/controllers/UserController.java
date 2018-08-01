@@ -68,7 +68,10 @@ public class UserController {
     }
 
     @PostMapping("/update")
-    public String performUpdate(@ModelAttribute User user) {
+    public String performUpdate(@ModelAttribute @Valid User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "user/updateUser";
+        }
         userRepository.save(user);
         ;
         return "redirect:/welcome";

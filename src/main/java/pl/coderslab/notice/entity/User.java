@@ -8,6 +8,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -55,7 +56,6 @@ public class User {
     private String phoneNumber;
 
     @NotBlank
-    @Past
     private String dateOfBirth;
 
 

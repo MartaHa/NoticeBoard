@@ -49,7 +49,7 @@ public class NoticeController {
 
     public String performNotice(@AuthenticationPrincipal CurrentUser customUser, @ModelAttribute @Valid Notice notice, BindingResult result) {
         if (result.hasErrors()) {
-            return "ride/addRide";
+            return "notice/addNotice";
         }
         User entityUser = customUser.getUser();
         notice.setUser(entityUser);
@@ -88,12 +88,16 @@ public class NoticeController {
 
     @PostMapping("/update")
 
-    public String performUpdate(@ModelAttribute Notice notice) {
+    public String performUpdate(@ModelAttribute @Valid Notice notice, BindingResult result) {
+        if (result.hasErrors()) {
+            return "notice/updateNotice";
+        }
         noticeRepository.save(notice);
         return "redirect:/notice/showAll";
 
     }
 
+    //list
     @ModelAttribute("categoriesList")
     public Collection<Category> populateCategories() {
         List<Category> categories = categoryRepository.findAll();
@@ -121,6 +125,17 @@ public class NoticeController {
         model.addAttribute("notices", noticeRepository.findAllNoticesbyUserId(id));
         return "admin/showNotices";
     }
+//showUserAds
+
+    @GetMapping("/showUserAds")
+    public String showUserAds(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
+        User thisUser = currentUser.getUser();
+        long userId = thisUser.getId();
+        model.addAttribute("notices", noticeRepository.findAllNoticesbyUserId(userId));
+        return "user/showUsersAds";
+    }
+}
+
 
 //deletenotice
 //
@@ -131,4 +146,4 @@ public class NoticeController {
 //        return "redirect:/welcome";
 //    }
 
-}
+
