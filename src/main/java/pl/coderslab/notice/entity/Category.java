@@ -5,6 +5,8 @@ import lombok.Setter;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,9 @@ public class Category{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @NotBlank
+    @Size(min = 2, max = 15)
     private String name;
     @ManyToMany
     private  List <Notice> notices;

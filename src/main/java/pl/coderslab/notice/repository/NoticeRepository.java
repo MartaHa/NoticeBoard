@@ -13,5 +13,5 @@ public interface NoticeRepository extends JpaRepository <Notice, Long> {
     long findAllCommentsByNotice(String category);
 
     @Query(value = "SELECT * FROM notice WHERE user_id = ?1", nativeQuery = true)
-    List<Notice> findNoticesbyUserId(long id);
+    List<Notice> findAllNoticesbyUserId(long id);
 }

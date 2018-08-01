@@ -4,9 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,10 +21,19 @@ public class Notice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank
+    @Size(min=5, max =25)
     private String title;
+
+    @NotBlank
+    @Size(min=25, max=100)
     private String summary;
+
+    @Future
     private String expirationDate;
-//    private LocalDateTime created;
+    private LocalDateTime created;
+    private LocalDateTime updated;
 
     @ManyToOne
     private User user;
@@ -34,10 +45,17 @@ public class Notice {
             cascade = CascadeType.ALL)
     private List <Comment> comments;
 
-//    @PrePersist
-//    protected void onCreate() {
-//        created = LocalDateTime.now();
-//    }
+
+    @PrePersist
+    protected void onCreate() {
+        created = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updated = LocalDateTime.now();
+    }
+
 
 }
 

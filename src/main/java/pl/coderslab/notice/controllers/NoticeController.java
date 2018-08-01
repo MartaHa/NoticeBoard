@@ -118,7 +118,7 @@ public class NoticeController {
     @GetMapping("showUsersNotice/{id}")
     public String showUsersNotice(Model model, @PathVariable long id) {
 
-        model.addAttribute("notices", noticeRepository.findNoticesbyUserId(id));
+        model.addAttribute("notices", noticeRepository.findAllNoticesbyUserId(id));
         return "admin/showNotices";
     }
 
