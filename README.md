@@ -1,10 +1,13 @@
 # NoticeBoard
 
-A NoticeBoard app created as an exercise to revise the use of the Spring Security and creating CRUD.
+A NoticeBoard app is my second app created as an exercise to revise the use of the Spring Security, working with Entity and Bootstrap.  
 
-Created with IDE Intellij IDEA and help of MYSQL Workbench:
-I used :
+Created with IDE Intellij IDEA and help of MYSQL Workbench:  
 
--Java
--Spring (Boot, Security, Data), Hibernate
--Thymeleaf
+Technologies I used :  
+-Java,  
+-Spring Boot,  
+-Spring Security,
+-Spring Data JPA,  
+-Hibernate,  
+-Thymeleaf,  
