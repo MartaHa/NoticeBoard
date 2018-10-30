@@ -68,4 +68,18 @@ public class User {
     public void deleteRoles() {
         this.getRoles().clear();
     }
+
+
+    public User(@Size(min = 2, max = 20) String username, @NotBlank @Size(min = 5, max = 20) String password, int enabled, Set<Role> roles, @NotBlank @Size(min = 2, max = 10) String firstName, @NotBlank @Size(min = 2, max = 10) String lastName, @NotBlank @Email String email, @NotBlank String phoneNumber, @NotBlank String dateOfBirth, List<Notice> notices) {
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+        this.roles = roles;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.dateOfBirth = dateOfBirth;
+        this.notices = notices;
+    }
 }

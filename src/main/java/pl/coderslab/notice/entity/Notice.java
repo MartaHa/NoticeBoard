@@ -1,10 +1,7 @@
 package pl.coderslab.notice.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Future;
@@ -22,15 +19,14 @@ public class Notice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+
     @Size(min=5, max =25)
     private String title;
 
-    @NotBlank
     @Size(min=25, max=100)
     private String summary;
 
-    @Future
+
     private String expirationDate;
     private LocalDateTime created;
     private LocalDateTime updated;
@@ -44,6 +40,9 @@ public class Notice {
     @OneToMany(mappedBy = "notice",
             cascade = CascadeType.ALL)
     private List <Comment> comments;
+
+    @OneToOne
+    private File file;
 
 
     @PrePersist

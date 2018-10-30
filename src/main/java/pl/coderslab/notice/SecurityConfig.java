@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import pl.coderslab.notice.converter.CategoryConverter;
 import pl.coderslab.notice.service.SpringDataUserDetailsService;
@@ -65,7 +67,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    }
 //
 
-
+    //uploading files
+    @Bean
+    public MultipartResolver mulitpartResolver() {
+        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+        commonsMultipartResolver.setDefaultEncoding("utf-8");
+        commonsMultipartResolver.setMaxUploadSizePerFile(400000002);
+        return commonsMultipartResolver;
+    }
 
 
 }
