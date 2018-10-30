@@ -1,13 +1,46 @@
-# NoticeBoard
+# Notice Board
+>  A notice board web application.
 
-A NoticeBoard app is my second app created as an exercise to revise the use of the Spring Security, working with Entity and Bootstrap.  
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Features](#features)
+* [Status](#status)
+
+
+## General info
+
+A NoticeBoard app is my second web application created as an exercise to revise the use of the Spring Security and working with Entities and Bootstrap.  
 
 Created with IDE Intellij IDEA and help of MYSQL Workbench:  
 
-Technologies I used :  
--Java,  
--Spring Boot,  
--Spring Security,
--Spring Data JPA,  
--Hibernate,  
--Thymeleaf,  
+
+## Technologies
+* Java
+* Spring (Data,Boot,Security)
+* Hibernate
+* MySQL
+* JUNIT
+* HTML
+* BootStrap
+
+
+## Features
+List of features ready and TODOs for future development
+* 2 roles created (admin, user)
+* CRUD operations on admin and user profile
+* operations on notice entity both for user and admin
+* some tests (TDD)
+* a Bootstrap layout added
+
+To-do list:
+* correct adding comments
+* more tests TDD
+
+## Status
+Project is: _in progress_,
+
+
+
+
+
