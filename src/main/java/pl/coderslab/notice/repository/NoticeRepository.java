@@ -11,9 +11,6 @@ import java.util.List;
 public interface NoticeRepository extends JpaRepository<Notice, Long> {
 
 
-    //find comments by Notice
-    @Query(value = "SELECT * comment_text FROM comment WHERE notice_id= ?1", nativeQuery = true)
-    long findAllCommentsByNotice(long id);
 
 
     //find notices by Id

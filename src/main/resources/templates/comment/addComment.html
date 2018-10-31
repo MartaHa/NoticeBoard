@@ -17,9 +17,15 @@
         <p><input type="hidden" th:value="*{id}"/></p>
         <button type="submit" class="btn btn-primary">Leave a comment</button>
     </form>
+    <div sec:authorize="hasAuthority('ADMIN')">
+        <p> Back o Main<a th:href="@{/welcomeAd}"> Main </a>
+        </p>
+    </div>
+    <div sec:authorize="hasAuthority('USER')">
+        <p> Back o Main<a th:href="@{/welcome}"> Main </a>
+        </p>
+    </div>
 </div>
-</div>
-</form>
 </section>
 </body>
 </html>

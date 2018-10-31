@@ -34,6 +34,10 @@ public class UserController {
 
     }
 
+
+
+
+
     /* show Current User */
 
     @GetMapping("/admin")
@@ -85,13 +89,6 @@ public class UserController {
     }
 
 
-    /* show All users list */
 
-
-    @GetMapping("/showUsersList")
-    public String showUsers(Model model) {
-        model.addAttribute("users", userRepository.findAll());
-        return "admin/showUsers";
-    }
 }
 

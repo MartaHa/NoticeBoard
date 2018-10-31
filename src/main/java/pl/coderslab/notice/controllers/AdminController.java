@@ -75,4 +75,12 @@ public class AdminController {
         return "redirect:/";
     }
 
+    /* show All users list */
+
+
+    @GetMapping("/showUsersList")
+    public String showUsers(Model model) {
+        model.addAttribute("users", userRepository.findAll());
+        return "admin/showUsers";
+    }
 }

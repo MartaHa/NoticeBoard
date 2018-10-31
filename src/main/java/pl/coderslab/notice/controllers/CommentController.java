@@ -31,7 +31,7 @@ public class CommentController {
         this.noticeRepository = noticeRepository;
     }
 
-    //addComment
+    /* add a Comment */
 
 
     @RequestMapping("/add/{id}")
@@ -52,20 +52,18 @@ public class CommentController {
         return "redirect:/notice/showAll";
     }
 
-    //showAllComments
+    /* show All Comments */
 
     @GetMapping("/showComments/{id}")
     public String showAll(Model model, @PathVariable long id) {
         Notice notice = noticeRepository.getOne(id);
-        List<Comment> allComments = notice.getComments();
+        List<Comment> allComments = commentRepository.findAllCommentsByNotice(id);
         if (allComments.isEmpty()) {
             return "comment/noComments";
         } else {
-            model.addAttribute("comments", commentRepository.findAll());
+            model.addAttribute("comments", commentRepository.findAllCommentsByNotice(id));
             return "comment/showComments";
 
         }
-
-
     }
 }

@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
@@ -6,25 +5,24 @@
 
 <body>
 <section layout:fragment="content">
-<h3>Hello what do you want to do : </h3>
-<div>
-    <p>
-        Add an ad:
-        <a th:href="@{notice/addNotice}"> Add an ad </a> <br>
-    </p>
-</div>
+    <h3>Hello what do you want to do : </h3>
     <div>
-        <p>
+        <span>
+            Add an ad:
+            <a th:href="@{notice/addNotice}"> Add an ad </a> <br>
+        </span>
+    </div>
+    <div>
+        <span>
             See my ads:
             <a th:href="@{notice/showUserAds}"> See my adds </a> <br>
-        </p>
+        </span>
     </div>
-<div>
-    <p>
-        See all ads:
+    <div>
+        <span>See all ads: </span>
         <a th:href="@{notice/showAll}"> See all ads </a> <br>
-    </p>
-</div>
+
+    </div>
 </section>
 </body>
 </html>

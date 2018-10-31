@@ -25,7 +25,10 @@
                 <td sec:authorize="hasRole('USER')"><a th:href="@{/notice/delete/{id}/(id=${notice.id})}"> DELETE </a></td>
             </tr>
         </table>
-        </br>
+        <div>
+            <a th:href="@{/welcome}">Back</a>
+        </div>
+
     </div>
 </section>
 </body>

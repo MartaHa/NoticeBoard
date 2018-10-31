@@ -26,8 +26,6 @@ import java.util.Optional;
 public class NoticeController {
 
 
-
-
     private final NoticeRepository noticeRepository;
     private final CategoryRepository categoryRepository;
 
@@ -36,7 +34,9 @@ public class NoticeController {
         this.categoryRepository = categoryRepository;
     }
 
-    //addNotice
+    /* addNotice */
+
+
     @GetMapping("/addNotice")
     public String addNotice(Model model) {
         model.addAttribute("notice", new Notice());
@@ -50,15 +50,16 @@ public class NoticeController {
         if (result.hasErrors()) {
             return "notice/addNotice";
         }
-        User entityUser = customUser.getUser();
-        notice.setUser(entityUser);
+        User noticeOwner = customUser.getUser();
+        notice.setUser(noticeOwner);
         noticeRepository.save(notice);
+
         return "redirect:/notice/showAll";
 
     }
 
 
-    //showAll
+    /* show All Users */
 
     @GetMapping("/showAll")
     public String showAll(Model model) {
@@ -66,7 +67,7 @@ public class NoticeController {
         return "notice/showAll";
     }
 
-    //showOne
+    /* Show one notice */
 
     @GetMapping("/showNotice/{id}")
 
@@ -76,7 +77,7 @@ public class NoticeController {
 
     }
 
-    //updateNotice
+    /* update Notice */
 
     @GetMapping("/update/{id}")
     public String showFormNotice(Model model, @PathVariable long id) {
@@ -96,13 +97,15 @@ public class NoticeController {
 
     }
 
-    //list
+    /* categories list */
+
     @ModelAttribute("categoriesList")
     public Collection<Category> populateCategories() {
         List<Category> categories = categoryRepository.findAll();
         return categories;
     }
-    //addCategoryToNotice
+
+    /* add Category To Notice */
 
     @GetMapping("addCategoryToNotice/{id}")
     public String showForm(Model model, @PathVariable long id) {
@@ -118,13 +121,16 @@ public class NoticeController {
 
     }
 
+    /* show Notices */
+
     @GetMapping("showUsersNotice/{id}")
     public String showUsersNotice(Model model, @PathVariable long id) {
 
         model.addAttribute("notices", noticeRepository.findAllNoticesbyUserId(id));
         return "admin/showNotices";
     }
-//showUserAds
+
+    /* show current users adds  */
 
     @GetMapping("/showUserAds")
     public String showUserAds(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
@@ -133,16 +139,15 @@ public class NoticeController {
         model.addAttribute("notices", noticeRepository.findAllNoticesbyUserId(userId));
         return "user/showUsersAds";
     }
+
+
+    /*deletenotice */
+
+    @GetMapping("/delete/{id}")
+
+    public String delete(@PathVariable long id) {
+        noticeRepository.deleteById(id);
+        return "redirect:/welcome";
+    }
 }
-
-
-//deletenotice
-//
-//    @GetMapping("/delete/{id}")
-//    public String delete(@PathVariable long id) {
-//
-//        noticeRepository.delete(noticeRepository.findOne(id));
-//        return "redirect:/welcome";
-//    }
-
 

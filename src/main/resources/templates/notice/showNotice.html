@@ -40,12 +40,10 @@
 </table>
 <table>
 <tr th:each="notice: ${notices}">>
-    <p><a th:href="@{/comment/viewComments/{id}/(id=${notice.id})}"> View comments.... </a>
+    <p><a th:href="@{/comment/showComments/{id}/(id=${notice.id})}"> Show comments.... </a>
     </p>
 </tr>
 </table>
-
-
 <div sec:authorize="hasAuthority('ADMIN')">
     <p> Back o Main<a th:href="@{/welcomeAd}"> Main </a>
     </p>

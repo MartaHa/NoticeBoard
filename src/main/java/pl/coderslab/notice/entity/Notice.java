@@ -20,10 +20,10 @@ public class Notice {
     private Long id;
 
 
-    @Size(min=5, max =25)
+    @Size(min = 5, max = 25)
     private String title;
 
-    @Size(min=25, max=100)
+    @Size(min = 25, max = 100)
     private String summary;
 
 
@@ -39,7 +39,7 @@ public class Notice {
 
     @OneToMany(mappedBy = "notice",
             cascade = CascadeType.ALL)
-    private List <Comment> comments;
+    private List<Comment> comments;
 
 
     @PrePersist

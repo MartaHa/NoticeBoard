@@ -31,26 +31,26 @@ public class CategoryController {
         this.noticeRepository = noticeRepository;
     }
 
-    //ADD CATEGORY
+    /* Add category */
 
     @GetMapping("/addCategory")
     public String showFormUser(Model model) {
-        model.addAttribute("category",new Category());
-        return "addCategory";
+        model.addAttribute("category", new Category());
+        return "/category/add";
     }
 
     @PostMapping("/addCategory")
 
     public String perform(@ModelAttribute @Valid Category category, BindingResult result) {
         if (result.hasErrors()) {
-            return "category/addCategory";
+            return "/category/add";
         }
         categoryRepository.save(category);
         return "redirect:/category/showCategories";
 
     }
 
-//showAll
+    /* show All Categories */
 
     @GetMapping("/showCategories")
     public String showAll(Model model) {
@@ -58,14 +58,15 @@ public class CategoryController {
         return "category/showCategories";
     }
 
-    //categoriesList
+    /* show List of categories */
+
     @ModelAttribute("categories")
     public Collection<Category> populateCategories() {
         List<Category> categories = categoryRepository.findAll();
         return categories;
     }
 
-//addCategoryToNotice
+    /* add Category to Notice */
 
     @GetMapping("addCategoryToNotice/{id}")
     public String showForm(Model model, @PathVariable long id) {

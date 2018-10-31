@@ -109,6 +109,13 @@ public class HomeController {
 
 
 
+    /* welcome admin */
+
+    @GetMapping("/welcomeAd")
+    public String welcomeAdmin() {
+        return "admin/welcomeAdmin";
+    }
+
     /* welcome user */
 
     @GetMapping("/welcome")
@@ -116,11 +123,4 @@ public class HomeController {
         return "user/welcome";
     }
 
-
-    /* welcome admin */
-
-    @GetMapping("/welcomeAd")
-    public String welcomeAdmin() {
-        return "admin/welcomeAdmin";
-    }
 }

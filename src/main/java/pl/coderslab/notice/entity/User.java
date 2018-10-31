@@ -31,7 +31,6 @@ public class User {
     private String username;
 
     @NotBlank
-    @Size(min= 5, max =20)
     private String password;
     private int enabled;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -49,7 +48,6 @@ public class User {
 
 
     @NotBlank
-    @Email
     private String email;
 
     @NotBlank
