@@ -23,6 +23,7 @@ Created with IDE Intellij IDEA and help of MYSQL Workbench:
 * JUNIT
 * HTML
 * BootStrap
+* Maven
 
 
 ## Features
@@ -32,10 +33,12 @@ List of features ready and TODOs for future development
 * operations on notice entity both for user and admin
 * some tests (TDD)
 * a Bootstrap layout added
+* adding comments both for user and admin
 
 To-do list:
-* correct adding comments
 * more tests TDD
+* correct category 
+* admin operations on users profiles
 
 ## Status
 Project is: _in progress_,
