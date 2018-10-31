@@ -26,8 +26,7 @@ import java.util.Optional;
 public class NoticeController {
 
 
-    @Autowired
-    Validator validator;
+
 
     private final NoticeRepository noticeRepository;
     private final CategoryRepository categoryRepository;

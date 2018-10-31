@@ -41,9 +41,6 @@ public class Notice {
             cascade = CascadeType.ALL)
     private List <Comment> comments;
 
-    @OneToOne
-    private File file;
-
 
     @PrePersist
     protected void onCreate() {

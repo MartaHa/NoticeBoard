@@ -25,26 +25,7 @@ public class AdminController {
     }
 
 
-    //addadmin
-
-    @GetMapping("/add")
-    public String showFormUser(Model model) {
-        model.addAttribute("users", new User());
-        return "admin/addAdmin";
-    }
-
-    @PostMapping("/add")
-
-    public String perform(@ModelAttribute @Valid User user, String role, BindingResult result) {
-        if (result.hasErrors()) {
-            return "admin/addAdmin";
-        }
-        userService.saveUser(user, "ROLE_ADMIN");
-        return "redirect:/login";
-
-    }
-
-    //redirectpage
+    /* Admin main */
 
     @GetMapping("/welcomeAd")
     public String redirectAdmin() {
@@ -52,7 +33,7 @@ public class AdminController {
     }
 
 
-//showAdmin
+    /* show profile Admin */
 
 
     @GetMapping("/showAdmin")
@@ -64,7 +45,7 @@ public class AdminController {
 
     }
 
-    //updateAdmin
+    /* update Admin */
 
     @GetMapping("/update")
     public String showFormUser(Model model, @AuthenticationPrincipal CurrentUser customUser) {
@@ -74,7 +55,7 @@ public class AdminController {
     }
 
     @PostMapping("/update")
-    public String performUpdate(@ModelAttribute @Valid User user,  BindingResult result) {
+    public String performUpdate(@ModelAttribute @Valid User user, BindingResult result) {
         if (result.hasErrors()) {
             return "admin/updateAdmin";
         }
@@ -84,10 +65,11 @@ public class AdminController {
     }
 
 
+    /* delete an Admin */
 
-    //deleteAdmin
+
     @GetMapping("/delete")
-    public String delete( @AuthenticationPrincipal CurrentUser customUser) {
+    public String delete(@AuthenticationPrincipal CurrentUser customUser) {
         User user = customUser.getUser();
         userRepository.delete(user);
         return "redirect:/";

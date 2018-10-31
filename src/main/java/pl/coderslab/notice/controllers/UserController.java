@@ -34,23 +34,7 @@ public class UserController {
 
     }
 
-    //addUser
-    @GetMapping("/add")
-    public String showFormUser(Model model) {
-        model.addAttribute("user", new User());
-        return "user/addUser";
-    }
-
-    @PostMapping("/add")
-
-    public String perform(@ModelAttribute @Valid User user, BindingResult bindingResult, String role) {
-        if (bindingResult.hasErrors()) {
-            return "user/addUser";
-        }
-        userService.saveUser(user, "ROLE_USER");
-        return "redirect:/login";
-
-    }
+    /* show Current User */
 
     @GetMapping("/admin")
     @ResponseBody
@@ -60,7 +44,8 @@ public class UserController {
     }
 
 
-    //updateUser
+    /* update User */
+
     @GetMapping("/update")
     public String showFormUser(Model model, @AuthenticationPrincipal CurrentUser customUser) {
         model.addAttribute("user", customUser.getUser());
@@ -78,7 +63,7 @@ public class UserController {
     }
 
 
-    //showUser
+    /* show User */
 
     @GetMapping("/showUser")
 
@@ -90,7 +75,8 @@ public class UserController {
     }
 
 
-    //deleteAdmin
+    /* delete User */
+
     @GetMapping("/delete")
     public String delete(@AuthenticationPrincipal CurrentUser customUser) {
         User user = customUser.getUser();
@@ -99,7 +85,9 @@ public class UserController {
     }
 
 
-    //showUsersToAdmin
+    /* show All users list */
+
+
     @GetMapping("/showUsersList")
     public String showUsers(Model model) {
         model.addAttribute("users", userRepository.findAll());

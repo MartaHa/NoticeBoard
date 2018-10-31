@@ -25,9 +25,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("admin/addAdmin", "user/addUser", "/home", "notice/**").permitAll()
+                .antMatchers( "/home", "notice/**").permitAll()
 //                .antMatchers("/admin/**").hasAnyRole("ADMIN")
                 .antMatchers("/user/welcome").hasAnyRole("USER")
+                .antMatchers("/admin/welcome").hasAnyRole("ADMIN")
                 .anyRequest().permitAll()
                 .and().formLogin()
                 .loginPage("/login")
@@ -55,25 +56,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public SpringDataUserDetailsService customUserDetailsService() {
         return new SpringDataUserDetailsService();
-    }
-//
-////    @Override
-//    public void addFormatters(FormatterRegistry registry) {
-//        registry.addConverter(getCategoryConverter());
-//    }
-//    @Bean
-//    public CategoryConverter getCategoryConverter() {
-//        return new CategoryConverter();
-//    }
-//
-
-    //uploading files
-    @Bean
-    public MultipartResolver mulitpartResolver() {
-        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
-        commonsMultipartResolver.setDefaultEncoding("utf-8");
-        commonsMultipartResolver.setMaxUploadSizePerFile(400000002);
-        return commonsMultipartResolver;
     }
 
 
